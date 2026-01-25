@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:22:22 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 23:08:20 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 23:28:11 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,7 +34,7 @@ static int      av_is_num(char *str)
 }
 static int  check_number(long nbr)
 {
-    if (nbr > 2147483647 || nbr < -2147483648)
+    if (nbr > INT_MAX || nbr < INT_MIN)
     {
         write(1, "ERROR_OVERFLOW_CASE\n", 20);
         return (0);
