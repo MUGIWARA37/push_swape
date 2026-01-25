@@ -1,110 +1,101 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 21:58:17 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/14 23:01:13 by alromero          #+#    #+#             */
+/*   Updated: 2019/11/16 20:45:53 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-static size_t	get_words_count(char const *s, const char c)
+static int		numstring(char const *s1, char c)
 {
-	size_t	words_count;
-	size_t	i;
+	int	comp;
+	int	cles;
+
+	comp = 0;
+	cles = 0;
+	if (*s1 == '\0')
+		return (0);
+	while (*s1 != '\0')
+	{
+		if (*s1 == c)
+			cles = 0;
+		else if (cles == 0)
+		{
+			cles = 1;
+			comp++;
+		}
+		s1++;
+	}
+	return (comp);
+}
+
+static int		numchar(char const *s2, char c, int i)
+{
+	int	lenght;
+
+	lenght = 0;
+	while (s2[i] != c && s2[i] != '\0')
+	{
+		lenght++;
+		i++;
+	}
+	return (lenght);
+}
+
+static char		**freee(char const **dst, int j)
+{
+	while (j > 0)
+	{
+		j--;
+		free((void *)dst[j]);
+	}
+	free(dst);
+	return (NULL);
+}
+
+static char		**affect(char const *s, char **dst, char c, int l)
+{
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
-	words_count = 0;
-	while (s[i])
+	j = 0;
+	while (s[i] != '\0' && j < l)
 	{
-		if (s[i] == c)
-			++i;
-		else
-		{
-			++words_count;
-			while (s[i] != c && s[i])
-				++i;
-		}
+		k = 0;
+		while (s[i] == c)
+			i++;
+		dst[j] = (char *)malloc(sizeof(char) * numchar(s, c, i) + 1);
+		if (dst[j] == NULL)
+			return (freee((char const **)dst, j));
+		while (s[i] != '\0' && s[i] != c)
+			dst[j][k++] = s[i++];
+		dst[j][k] = '\0';
+		j++;
 	}
-	return (words_count);
+	dst[j] = 0;
+	return (dst);
 }
 
-static size_t	word_len(size_t i, char const *str, const char c)
+char			**ft_split(char const *s, char c)
 {
-	size_t	size;
+	char	**dst;
+	int		l;
 
-	size = 0;
-	while (str[i] && str[i] != c)
-	{
-		++size;
-		++i;
-	}
-	return (size);
-}
-
-static int	split_str(char *str, char **words, char c, t_indexes *sp_ind)
-{
-	while (str[sp_ind->i])
-	{
-		if (str[sp_ind->i] != c)
-		{
-			words[sp_ind->j] = (char *)malloc(word_len(sp_ind->i, str, c) + 1);
-			if (!words[sp_ind->j])
-				return (sp_ind->alloc_count);
-			else
-				++sp_ind->alloc_count;
-			sp_ind->k = 0;
-			while (str[sp_ind->i] && str[sp_ind->i] != c)
-				words[sp_ind->j][sp_ind->k++] = str[sp_ind->i++];
-			words[sp_ind->j][sp_ind->k] = '\0';
-			++sp_ind->j;
-		}
-		else
-			++sp_ind->i;
-	}
-	return (sp_ind->alloc_count);
-}
-
-static void	ft_free(char **words, size_t alloc_count)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < alloc_count)
-	{
-		free(words[i]);
-		++i;
-	}
-	free(words);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t		words_count;
-	size_t		alloc_count;
-	char		**words;
-	t_indexes	split_indexes;
-
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	words_count = get_words_count(s, c);
-	words = (char **)malloc(sizeof(char *) * (words_count + 1));
-	if (!words)
+	l = numstring(s, c);
+	dst = (char **)malloc(sizeof(char *) * (l + 1));
+	if (dst == NULL)
 		return (NULL);
-	split_indexes.i = 0;
-	split_indexes.j = 0;
-	split_indexes.k = 0;
-	split_indexes.alloc_count = 0;
-	alloc_count = split_str((char *)s, words, c, &split_indexes);
-	if (alloc_count < words_count)
-	{
-		ft_free(words, alloc_count);
-		return (NULL);
-	}
-	words[words_count] = 0;
-	return (words);
+	return (affect(s, dst, c, l));
 }

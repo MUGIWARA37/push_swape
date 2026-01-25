@@ -1,39 +1,31 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 01:01:48 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/06 13:48:26 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:29:08 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len_src;
-	size_t	len_dst;
+	size_t	londst;
+	size_t	lonsrc;
+	size_t	cont;
 
-	if (!dst && !dstsize)
-		return (0);
-	len_src = ft_strlen(src);
-	len_dst = ft_strlen(dst);
-	if (dstsize == 0)
-		return (dstsize + len_src);
-	i = 0;
-	while (dst[i] && i < dstsize)
-		++i;
-	j = 0;
-	while (src[j] && (i < dstsize - 1))
-		dst[i++] = src[j++];
-	if (i < dstsize)
-		dst[i] = '\0';
-	if (dstsize < len_dst)
-		return (len_src + dstsize);
-	return (len_src + len_dst);
+	londst = ft_strlen(dst);
+	lonsrc = ft_strlen(src);
+	if (dstsize <= londst)
+		return (lonsrc + dstsize);
+	cont = londst;
+	while (*src != '\0' && cont < (dstsize - 1))
+		*(dst + cont++) = *src++;
+	*(dst + cont) = '\0';
+	return (londst + lonsrc);
 }

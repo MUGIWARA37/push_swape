@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:57:27 by alromero          #+#    #+#             */
-/*   Updated: 2019/11/13 20:15:57 by alromero         ###   ########.fr       */
+/*   Created: 2019/11/15 21:56:44 by alromero          #+#    #+#             */
+/*   Updated: 2019/11/26 11:22:07 by alromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	t_list *gon;
+	t_list *aux;
+
+	if (!(aux = *lst))
+		return ;
+	while (aux)
+	{
+		gon = aux->next;
+		del(aux->content);
+		free(aux);
+		aux = gon;
+	}
+	*lst = NULL;
 }

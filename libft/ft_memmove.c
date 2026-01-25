@@ -1,37 +1,31 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 19:21:42 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/08 12:39:15 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:28:44 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
+#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
-	size_t	i;
+	unsigned char		*p_str1;
+	unsigned const char	*p_str2;
 
-	if (!dst && !src)
-		return (NULL);
-	i = 0;
-	if ((size_t)dst - (size_t)src < len)
-	{
-		i = len;
-		while (--i < len)
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-	}
-	else
-	{
-		while (i < len)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			++i;
-		}
-	}
-	return (dst);
+	if (str1 < str2)
+		return (ft_memcpy(str1, str2, n));
+	p_str1 = (unsigned char*)str1;
+	p_str2 = (unsigned const char*)str2;
+	if (!n || str1 == str2)
+		return (str1);
+	while (n--)
+		p_str1[n] = p_str2[n];
+	return (str1);
 }

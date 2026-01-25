@@ -1,27 +1,34 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:31:44 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/11 12:47:12 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:29:31 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
+#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	long	len;
+	int longitud;
+	int flag;
 
-	len = ft_strlen(s);
-	while (len >= 0)
+	flag = 0;
+	longitud = ft_strlen(str);
+	while (longitud >= 0 && flag == 0)
 	{
-		if (s[len] == (char)c)
-			return ((char *)(s + len));
-		--len;
+		if (str[longitud] == c)
+		{
+			return ((char*)&str[longitud]);
+			flag = 1;
+		}
+		longitud--;
 	}
-	return (0);
+	return (NULL);
 }

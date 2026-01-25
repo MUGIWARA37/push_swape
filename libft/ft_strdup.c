@@ -1,32 +1,35 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 20:09:57 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/14 15:52:44 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:29:01 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {
-	char	*dst;
+	char	*d;
+	char	*p_s1;
 	size_t	i;
 
-	i = ft_strlen(s1);
-	dst = (char *)malloc(sizeof(char) * (i + 1));
-	if (!dst)
-		return (0);
+	p_s1 = (char*)s1;
 	i = 0;
-	while (s1[i])
+	d = (char*)malloc(ft_strlen(p_s1) + 1);
+	if (d == NULL)
+		return (NULL);
+	while (p_s1[i] != '\0')
 	{
-		dst[i] = s1[i];
-		++i;
+		d[i] = p_s1[i];
+		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	d[i] = '\0';
+	return (d);
 }

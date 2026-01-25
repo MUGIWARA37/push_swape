@@ -1,97 +1,83 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 22:06:01 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/12 20:02:31 by alromero          #+#    #+#             */
+/*   Updated: 2019/11/13 21:41:03 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-static size_t	get_num_size(long num)
+int		digit_counter(int n)
 {
-	size_t	size;
+	int i;
+	int	copy;
 
-	size = 0;
-	if (num == 0)
+	i = 0;
+	if (n == 0)
 		return (1);
-	while (num)
+	if (n == -2147483648)
+		return (11);
+	if (n < 0)
 	{
-		++size;
-		num /= 10;
+		n = -n;
+		i++;
 	}
-	return (size);
+	copy = n;
+	while (copy > 0)
+	{
+		copy = copy / 10;
+		i++;
+	}
+	return (i);
 }
 
-static void	ft_strrev(char *str, size_t index, size_t i)
+int		exp_counter(int n)
 {
-	size_t	start;
-	size_t	end;
-	char	temp;
+	int exp;
+	int	digits;
 
-	end = i - 1;
-	start = index;
-	while (start < end)
-	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		++start;
-		--end;
-	}
-}
-
-static void	get_str(char *str, size_t index, long num)
-{
-	size_t	i;
-
-	i = index;
-	if (num == 0)
-	{
-		str[0] = '0';
-		++i;
-	}
-	else
-	{
-		while (num != 0)
-		{
-			str[i] = (num % 10) + '0';
-			num /= 10;
-			++i;
-		}
-	}
-	str[i] = '\0';
-	ft_strrev(str, index, i);
+	if (n == 0)
+		return (1);
+	if (n == -2147483648)
+		return (1000000000);
+	digits = digit_counter(n);
+	if (n < 0)
+		digits--;
+	exp = 1;
+	while (--digits)
+		exp = exp * 10;
+	return (exp);
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	num_size;
-	size_t	start_index;
-	int		sign;
-	long	num;
-	char	*str;
+	char		*str;
+	int			exp;
+	int			i;
+	long int	copy;
 
-	num = n;
-	sign = 1;
-	start_index = 0;
-	num_size = get_num_size(num);
-	if (num < 0)
-	{
-		sign = -1;
-		start_index = 1;
-		++num_size;
-		num = -num;
-	}
-	str = (char *)malloc(num_size + 1);
-	if (!str)
+	copy = (long int)n;
+	exp = exp_counter(n);
+	i = 0;
+	if (!(str = malloc(digit_counter(n) + 1)))
 		return (NULL);
-	if (sign == -1)
-		str[0] = '-';
-	get_str(str, start_index, num);
+	if (n < 0)
+	{
+		str[i++] = '-';
+		copy = -copy;
+	}
+	while (exp > 0)
+	{
+		str[i++] = (copy / exp) + 48;
+		copy = copy % exp;
+		exp = exp / 10;
+	}
+	str[i] = '\0';
 	return (str);
 }

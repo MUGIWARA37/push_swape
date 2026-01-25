@@ -1,30 +1,33 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 21:19:22 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/13 20:17:49 by alromero          #+#    #+#             */
+/*   Updated: 2019/11/13 20:29:23 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	num;
-	char	c;
+	long int copia;
 
-	num = n;
-	if (num < 0)
+	copia = n;
+	if (copia < 0)
 	{
+		copia = (copia * -1);
 		write(fd, "-", 1);
-		num *= -1;
 	}
-	if (num / 10)
-		ft_putnbr_fd(num / 10, fd);
-	c = num % 10 + '0';
-	write(fd, &c, 1);
+	if (copia > 9)
+	{
+		ft_putnbr_fd(copia / 10, fd);
+		ft_putchar_fd((copia % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(copia + '0', fd);
 }

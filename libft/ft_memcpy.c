@@ -1,32 +1,34 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 00:47:06 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/08 12:21:08 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:28:42 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*dest;
-	unsigned char	*srce;
-	size_t			i;
+	unsigned const char	*s;
+	unsigned char		*d;
+	size_t				i;
 
-	if (!dst && !src)
-		return (NULL);
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
 	i = 0;
-	dest = (unsigned char *)dst;
-	srce = (unsigned char *)src;
-	while (i < n)
+	while (dst == src || !n)
 	{
-		dest[i] = srce[i];
-		++i;
+		return (dst);
+	}
+	while (n > i)
+	{
+		d[i] = s[i];
+		i++;
 	}
 	return (dst);
 }

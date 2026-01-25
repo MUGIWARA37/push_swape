@@ -5,27 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:45:56 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/08 12:39:50 by agomez-o          #+#    #+#             */
+/*   Updated: 2026/01/25 20:46:47 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *dst, const void *str, size_t n)
 {
-	size_t			i;
-	unsigned char	*str1;
 	unsigned char	*str2;
+	unsigned char	*dst2;
 
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n)
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		++i;
-	}
+	dst2 = (unsigned char*)dst;
+	str2 = (unsigned char *)str;
+	if (n)
+		while (n--)
+			if (*dst2++ != *str2++)
+				return (*(--dst2) - *(--str2));
 	return (0);
 }

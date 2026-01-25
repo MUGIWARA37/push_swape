@@ -1,31 +1,31 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:43:50 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/04 17:11:12 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:29:24 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *str, const char *str2, size_t c)
 {
-	size_t	i;
+	size_t			i;
+	unsigned int	diff;
 
+	diff = 0;
 	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	while ((str[i] != '\0') && (str2[i] != '\0')
+		&& (diff == 0) && (i < c))
 	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-		{
-			if ((unsigned char)s1[i] < (unsigned char)s2[i])
-				return (-1);
-			return (1);
-		}
-		++i;
+		diff = (unsigned char)str[i] - (unsigned char)str2[i];
+		i++;
 	}
-	return ((unsigned char)s1[i] < (unsigned char)s2[i]);
+	if ((diff == 0) && (i < c))
+		diff = (unsigned char)str[i] - (unsigned char)str2[i];
+	return (diff);
 }

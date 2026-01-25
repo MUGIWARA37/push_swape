@@ -1,29 +1,36 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 17:27:52 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 15:04:13 by rhlou            ###   ########.fr       */
+/*   Created: 2019/11/11 11:42:41 by agomez-o          #+#    #+#             */
+/*   Updated: 2019/11/27 13:28:56 by alromero         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
+#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t	i;
+	int i;
+	int flag;
 
+	flag = 0;
 	i = 0;
-	while (s[i])
+	while (((char*)str)[i] != '\0' && flag == 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		++i;
+		if (((char*)str)[i] == c)
+		{
+			return ((char*)&str[i]);
+			flag = 1;
+		}
+		i++;
 	}
-	if (s[i] == (char)c)
-		return ((char *)(s + i));
-	return (0);
+	if (c == '\0')
+		return ((char*)&str[i]);
+	return (NULL);
 }

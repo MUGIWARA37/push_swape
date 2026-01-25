@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alromero <alromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:57:27 by alromero          #+#    #+#             */
-/*   Updated: 2019/11/13 20:15:57 by alromero         ###   ########.fr       */
+/*   Created: 2019/11/15 21:52:23 by alromero          #+#    #+#             */
+/*   Updated: 2019/11/26 11:38:54 by alromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	t_list *temporal;
+
+	temporal = (*alst);
+	if ((*alst))
+	{
+		while (temporal->next != NULL)
+			temporal = temporal->next;
+		temporal->next = new;
+	}
+	if (!(*alst))
+		((*alst) = new);
 }
