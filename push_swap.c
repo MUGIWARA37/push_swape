@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 21:25:33 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 22:56:57 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -20,7 +20,7 @@ void        printf_stack(t_stack *s)
         s = s->next;
     }
 }
-int main(int ac, char **av)
+int main(int ac , char **av)
 {
     t_stack *a;
     t_stack *b;
@@ -28,7 +28,10 @@ int main(int ac, char **av)
     a = NULL;
     b = NULL;
     if(ac == 1 || (ac == 2 && !av[1][0]))
+    {
+        write(1,"ERROR_INVALIDE_ARGUMANT\n",24);
         return (1);
+    }
     else if (ac == 2)
         av = ft_split(av[1], ' ');
     stack_init(&a,av + 1);
@@ -38,4 +41,5 @@ int main(int ac, char **av)
     printf_stack(a);
     Destroy_stack(&a);
     Destroy_stack(&b);
+    return(0);
 }

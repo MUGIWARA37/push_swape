@@ -6,17 +6,37 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:22:22 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 21:47:49 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 23:08:20 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
+
+static int      av_is_num(char *str)
+{
+    int i;
+
+    i=0;
+    while (str[i] && (str[i] == ' ' || str[i] == '+' || str[i] == '-'))
+        i++;
+    if(!str[i])
+        return 0;
+    while (str[i])
+    {
+        if (str[i] > '9' || str[i] < '0')
+            return (0);
+        i++;
+    }
+    if(str[i])
+        return (0);
+    return (1);
+}
 static int  check_number(long nbr)
 {
-    if (nbr > INT_MAX || nbr < INT_MIN)
+    if (nbr > 2147483647 || nbr < -2147483648)
     {
-        write(1, "ERROR\n", 6);
+        write(1, "ERROR_OVERFLOW_CASE\n", 20);
         return (0);
     }
     return (1);
@@ -30,7 +50,7 @@ static int  append_node(t_stack **stack, long nbr)
         return (0);
     if (IsBelongs(*stack, nbr))
     {
-        write(1, "ERROR\n", 6);
+        write(1, "ERROR_DUPLICATE_ARGUMANT\n", 25);
         return (0);
     }
     tmp = *stack;
@@ -76,10 +96,15 @@ void    stack_init(t_stack **stack, char **av)
     int     i;
     long    nbr;
 
-    *stack = NULL;
     i = 0;
     while (av[i])
     {
+        if(!av_is_num(av[i]))
+        {
+            write(1,"ERROR_BAD_ARGUMANT\n",19);
+            Destroy_stack(stack);
+            return ;
+        }
         nbr = ft_atoi(av[i]);
         if (!append_node(stack, nbr))
         {

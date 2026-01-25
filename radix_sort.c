@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:52:35 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 21:45:17 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 22:59:57 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -30,10 +30,12 @@ int get_max_bits(t_stack *stack)
 
 void process_bit_pass(t_stack **a, t_stack **b, int bit)
 {
-    int size = 0;
+    int size ;
     int j;
-    t_stack *tmp = *a;
+    t_stack *tmp;
 
+    size = 0;
+    tmp = *a;
     while (tmp)
     {
         size++;

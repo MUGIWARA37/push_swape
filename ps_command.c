@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:14:49 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 21:14:41 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 22:36:29 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -43,6 +43,7 @@ void    pa(t_stack **a, t_stack **b)
     *b = (*b)->next;
     tmp->next = *a;
     *a = tmp;
+    write(1,"pa\n",3);
 }
 
 void    pb(t_stack **a, t_stack **b)
@@ -55,6 +56,7 @@ void    pb(t_stack **a, t_stack **b)
     *a = (*a)->next;
     tmp->next = *b;
     *b = tmp;
+    write(1,"pb\n",3);
 }
 
 void    ra(t_stack **stack)
@@ -71,6 +73,7 @@ void    ra(t_stack **stack)
     while (last->next)
         last = last->next;
     last->next = first;
+    write(1,"ra\n",3);
 }
 
 void    double_rotate_mn(t_stack **a,t_stack **b)

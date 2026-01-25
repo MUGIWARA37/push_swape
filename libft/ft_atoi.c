@@ -3,7 +3,7 @@
 long	ft_atoi(const char *str)
 {
 	int				i;
-	int				sign;
+	long				sign;
 	unsigned long	result;
 
 	result = 0;
