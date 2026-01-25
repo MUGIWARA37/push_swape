@@ -6,13 +6,13 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:36:07 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 18:47:13 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 21:18:25 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-t_stack     *creat_node(int data, int index)
+t_stack     *creat_node(int data)
 {
     t_stack *node;
 
@@ -20,7 +20,6 @@ t_stack     *creat_node(int data, int index)
     if(!node)
         return NULL;
     node->data = data;
-    node->index = index;
     node->next = NULL;
     return (node);
 }
@@ -66,12 +65,12 @@ void       free_split(char **av)
     free(av);
 }
 
-void    fill_stack(t_stack **stack, int data , int index)
+void    fill_stack(t_stack **stack, int data )
 {
     t_stack    *new;
     t_stack    *tmp;
     
-    new = creat_node(data , index);
+    new = creat_node(data);
     if(!new)
         return ;
     if(!*stack)

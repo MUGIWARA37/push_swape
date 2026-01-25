@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:14:49 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/24 19:56:33 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/25 21:14:41 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -33,7 +33,7 @@ void    double_swap(t_stack **stack_a , t_stack **stack_b)
     swap_f2(stack_b);
 }
 
-void    push_a(t_stack **a, t_stack **b)
+void    pa(t_stack **a, t_stack **b)
 {
     t_stack *tmp;
 
@@ -45,7 +45,7 @@ void    push_a(t_stack **a, t_stack **b)
     *a = tmp;
 }
 
-void    push_b(t_stack **a, t_stack **b)
+void    pb(t_stack **a, t_stack **b)
 {
     t_stack *tmp;
 
@@ -57,7 +57,7 @@ void    push_b(t_stack **a, t_stack **b)
     *b = tmp;
 }
 
-void    rotate_mf(t_stack **stack)
+void    ra(t_stack **stack)
 {
     t_stack *first;
     t_stack *last;
@@ -77,14 +77,14 @@ void    double_rotate_mn(t_stack **a,t_stack **b)
 {
     if(a == b)
     {
-        rotate_mf(a);
+        ra(a);
         return ;
     }
-    rotate_mf(a);
-    rotate_mf(b);
+    ra(a);
+    ra(b);
 }
 
-void    reverse_rotate_mf(t_stack **stack)
+void    reverse_ra(t_stack **stack)
 {
     t_stack *prev;
     t_stack *last;
@@ -106,9 +106,9 @@ void      double_rrr_mf(t_stack    **a,t_stack    **b)
 {
     if(a == b)
     {
-        reverse_rotate_mf(a);
+        reverse_ra(a);
         return ;
     }
-    reverse_rotate_mf(a);
-    reverse_rotate_mf(b);
+    reverse_ra(a);
+    reverse_ra(b);
 }
