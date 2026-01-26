@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/26 14:37:05 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/26 14:44:09 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	else
 		stack_init(&a, av + 1);
 	chunk_sort(&a, &b);
-	printf_stack(a);
+	// printf_stack(a);
 	destroy_stack(&a);
 	destroy_stack(&b);
 	return (0);

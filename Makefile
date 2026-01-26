@@ -11,7 +11,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c PUSH_SWAP_H
+%.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
