@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 22:56:57 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/26 12:23:49 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -33,11 +33,16 @@ int main(int ac , char **av)
         return (1);
     }
     else if (ac == 2)
+    {
         av = ft_split(av[1], ' ');
-    stack_init(&a,av + 1);
-    if(ac == 2)
+        stack_init(&a,av);
         free_split(av);
-    radix_sort(&a , &b);
+
+    }
+    else    
+        stack_init(&a,av + 1);
+    // radix_sort(&a , &b);
+    chunk_sort(&a,&b);
     printf_stack(a);
     Destroy_stack(&a);
     Destroy_stack(&b);

@@ -1,20 +1,18 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   split_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 23:01:13 by alromero          #+#    #+#             */
-/*   Updated: 2026/01/25 21:08:42 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/26 12:36:15 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include <string.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+# include "push_swap.h"
 
-static int		numstring(char const *s1, char c)
+ int		numstring(char const *s1, char c)
 {
 	int	comp;
 	int	cles;
@@ -37,7 +35,7 @@ static int		numstring(char const *s1, char c)
 	return (comp);
 }
 
-static int		numchar(char const *s2, char c, int i)
+ int		numchar(char const *s2, char c, int i)
 {
 	int	lenght;
 
@@ -50,7 +48,7 @@ static int		numchar(char const *s2, char c, int i)
 	return (lenght);
 }
 
-static char		**freee(char const **dst, int j)
+ char		**freee(char const **dst, int j)
 {
 	while (j > 0)
 	{
@@ -61,7 +59,7 @@ static char		**freee(char const **dst, int j)
 	return (NULL);
 }
 
-static char		**affect(char const *s, char **dst, char c, int l)
+ char		**affect(char const *s, char **dst, char c, int l)
 {
 	int	i;
 	int	j;
@@ -86,16 +84,4 @@ static char		**affect(char const *s, char **dst, char c, int l)
 	return (dst);
 }
 
-char			**ft_split(char const *s, char c)
-{
-	char	**dst;
-	int		l;
 
-	if (s == NULL)
-		return (NULL);
-	l = numstring(s, c);
-	dst = (char **)malloc(sizeof(char *) * (l + 1));
-	if (dst == NULL)
-		return (NULL);
-	return (affect(s, dst, c, l));
-}
