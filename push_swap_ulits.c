@@ -6,80 +6,81 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:36:07 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/25 21:18:25 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/26 14:38:35 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
-t_stack     *creat_node(int data)
+t_stack	*creat_node(int data)
 {
-    t_stack *node;
+	t_stack	*node;
 
-    node = malloc(sizeof(t_stack));
-    if(!node)
-        return NULL;
-    node->data = data;
-    node->next = NULL;
-    return (node);
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
 }
 
-int     IsBelongs(t_stack *stack , int key)
+int	is_belongs(t_stack *stack, int key)
 {
-    t_stack     *tmp;
+	t_stack	*tmp;
 
-    if(!stack)
-        return (0);
-    tmp = stack ;
-    while (tmp)
-    {
-        if(tmp->data == key)
-            return (1);
-        tmp = tmp->next;
-    }
-    return (0);
+	if (!stack)
+		return (0);
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->data == key)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
-void    Destroy_stack(t_stack **stack)
+void	destroy_stack(t_stack **stack)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    if(!stack || !*stack)
-        return ;
-    while(*stack)
-    {
-        tmp = *stack;
-        *stack = (*stack)->next;
-        free(tmp);
-    }
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
 }
 
-void       free_split(char **av)
+void	free_split(char **av)
 {
-    int i;
-    if(!av)
-        return ;
-    i  = 0;
-    while (av[i])
-        free(av[i++]);
-    free(av);
+	int	i;
+
+	if (!av)
+		return ;
+	i = 0;
+	while (av[i])
+		free(av[i++]);
+	free(av);
 }
 
-void    fill_stack(t_stack **stack, int data )
+void	fill_stack(t_stack **stack, int data)
 {
-    t_stack    *new;
-    t_stack    *tmp;
-    
-    new = creat_node(data);
-    if(!new)
-        return ;
-    if(!*stack)
-    {
-        *stack = new;
-        return ;
-    }
-    tmp = *stack;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new;
+	t_stack	*new;
+	t_stack	*tmp;
+
+	new = creat_node(data);
+	if (!new)
+		return ;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:07:35 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/26 12:40:33 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/26 14:37:05 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,10 +26,10 @@ typedef struct s_stack
 
 // inserting functiong and helper functions 
 void    stack_init(t_stack **stack ,char **av);
-int     IsBelongs(t_stack *stack , int key);
+int     is_belongs(t_stack *stack , int key);
 void    fill_stack(t_stack **stack, int data);
 void    free_split(char **av);
-void    Destroy_stack(t_stack **stack);
+void    destroy_stack(t_stack **stack);
 char			**ft_split(char const *s, char c);
 t_stack     *creat_node(int data);
 long	ft_atoi(const char *str);

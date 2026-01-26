@@ -10,42 +10,42 @@
 /*                                                                            */
 /******************************************************************************/
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-void    rra(t_stack **stack)
+void	rra(t_stack **stack)
 {
-    t_stack *prev;
-    t_stack *last;
+	t_stack	*prev;
+	t_stack	*last;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-    last = *stack;
-    while (last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-    prev->next = NULL;
-    last->next = *stack;
-    *stack = last;
-    write(1,"rra\n",4);
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	write(1, "rra\n", 4);
 }
 
-void    rrb(t_stack **stack)
+void	rrb(t_stack **stack)
 {
-    t_stack *prev;
-    t_stack *last;
+	t_stack	*prev;
+	t_stack	*last;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-    last = *stack;
-    while (last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-    prev->next = NULL;
-    last->next = *stack;
-    *stack = last;
-    write(1,"rrb\n",4);
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	last = *stack;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
+	write(1, "rrb\n", 4);
 }

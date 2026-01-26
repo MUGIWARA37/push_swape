@@ -10,9 +10,9 @@
 /*                                                                            */
 /******************************************************************************/
 
-# include "push_swap.h"
+#include "push_swap.h"
 
- int		numstring(char const *s1, char c)
+int	numstring(char const *s1, char c)
 {
 	int	comp;
 	int	cles;
@@ -35,7 +35,7 @@
 	return (comp);
 }
 
- int		numchar(char const *s2, char c, int i)
+int	numchar(char const *s2, char c, int i)
 {
 	int	lenght;
 
@@ -48,7 +48,7 @@
 	return (lenght);
 }
 
- char		**freee(char const **dst, int j)
+char	**freee(char const **dst, int j)
 {
 	while (j > 0)
 	{
@@ -59,7 +59,7 @@
 	return (NULL);
 }
 
- char		**affect(char const *s, char **dst, char c, int l)
+char	**affect(char const *s, char **dst, char c, int l)
 {
 	int	i;
 	int	j;
@@ -83,5 +83,3 @@
 	dst[j] = 0;
 	return (dst);
 }
-
-
