@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/27 18:21:51 by rhlou            ###   ########.fr       */
+/*   Created: 2025/10/21 19:57:43 by rhlou             #+#    #+#             */
+/*   Updated: 2026/01/27 18:19:56 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	ft_lstsize(t_stack *lst)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	i;
 
-	a = NULL;
-	b = NULL;
-	if (ac == 1)
+	i = 0;
+	while (lst)
 	{
-		write(1, "ERROR_INVALIDE_ARGUMANT\n", 24);
-		return (1);
+		i++;
+		lst = lst->next;
 	}
-	arg_handler(&a, av + 1);
-	chunk_sort(&a, &b);
-	destroy_stack(&a);
-	destroy_stack(&b);
-	return (0);
+	return (i);
 }

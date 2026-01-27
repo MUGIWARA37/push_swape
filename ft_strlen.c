@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/27 18:21:51 by rhlou            ###   ########.fr       */
+/*   Created: 2025/10/13 16:57:34 by rhlou             #+#    #+#             */
+/*   Updated: 2026/01/27 18:20:07 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+size_t	ft_strlen(const char *s)
 {
-	t_stack	*a;
-	t_stack	*b;
+	size_t	i;
 
-	a = NULL;
-	b = NULL;
-	if (ac == 1)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		write(1, "ERROR_INVALIDE_ARGUMANT\n", 24);
-		return (1);
+		i++;
 	}
-	arg_handler(&a, av + 1);
-	chunk_sort(&a, &b);
-	destroy_stack(&a);
-	destroy_stack(&b);
-	return (0);
+	return (i);
 }

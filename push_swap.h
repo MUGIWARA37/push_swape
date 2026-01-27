@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:07:35 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/26 14:37:05 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/27 18:21:54 by rhlou            ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -25,19 +25,24 @@ typedef struct s_stack
 }					t_stack;
 
 // inserting functiong and helper functions
-void				stack_init(t_stack **stack, char **av);
 int					is_belongs(t_stack *stack, int key);
 void				fill_stack(t_stack **stack, int data);
 void				free_split(char **av);
 void				destroy_stack(t_stack **stack);
-char				**ft_split(char const *s, char c);
 t_stack				*creat_node(int data);
-long				ft_atoi(const char *str);
 int					ft_lstsize(t_stack *lst);
+int					is_belongs(t_stack *stack, int key);
+void				arg_handler(t_stack **stack, char **av);
+int					av_is_num(char *str);
+int					check_number(long nbr);
+void				assign_index(t_stack **stack);
+size_t				ft_strlcpy(char *dst, const char *src, size_t size);
+size_t				ft_strlen(const char *s);
+long				ft_atoi(const char *str);
+char				**ft_split(char const *s, char c);
 
 // sorting algo and moves function
 void				chunk_sort(t_stack **a, t_stack **b);
-void				radix_sort(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
 void				ra(t_stack **stack);
