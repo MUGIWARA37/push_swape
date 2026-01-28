@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 10:25:52 by rhlou            ###   ########.fr       */
+/*   Created: 2026/01/28 09:26:10 by rhlou             #+#    #+#             */
+/*   Updated: 2026/01/28 09:46:39 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+int	is_sorted(t_stack **stack)
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		size;
+	t_stack	*tmp;
 
-	a = NULL;
-	b = NULL;
-	if (ac == 1)
-		return (0);
-	arg_handler(&a, av + 1);
-	if (is_sorted(&a))
-		return (0);
-	size = ft_lstsize(a);
-	if (size == 2 || size == 3 || size == 5)
-		sort_min_num(&a, &b, size);
-	chunk_sort(&a, &b);
-	destroy_stack(&a);
-	destroy_stack(&b);
-	return (0);
+	if (!stack || !*stack || !(*stack)->next)
+		return (1);
+	tmp = *stack;
+	while (tmp->next)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	destroy_stack(stack);
+	return (1);
 }

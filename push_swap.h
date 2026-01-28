@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:07:35 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/27 18:21:54 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 10:29:37 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,18 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
 long				ft_atoi(const char *str);
 char				**ft_split(char const *s, char c);
+int					is_sorted(t_stack **stack);
+void				sort_min_num(t_stack **a, t_stack **b, int size);
 
 // sorting algo and moves function
 void				chunk_sort(t_stack **a, t_stack **b);
+void				sb(t_stack **b);
+void				sa(t_stack **a);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
 void				ra(t_stack **stack);
 void				rb(t_stack **stack);
+void				rra(t_stack **stack);
 void				rrb(t_stack **stack);
 
 // split helpers

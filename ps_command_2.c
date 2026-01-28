@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:34:00 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/27 18:21:27 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 10:15:57 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,33 @@ void	rrb(t_stack **stack)
 	last->next = *stack;
 	*stack = last;
 	write(1, "rrb\n", 4);
+}
+
+void	sa(t_stack **a)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	if (!a || !*a || !(*a)->next)
+		return ;
+	first = *a;
+	second = (*a)->next;
+	first->next = second->next;
+	second->next = first;
+	*a = second;
+	write(1, "sa\n", 3);
+}
+void	sb(t_stack **b)
+{
+	t_stack	*first;
+	t_stack	*second;
+
+	if (!b || !*b || !(*b)->next)
+		return ;
+	first = *b;
+	second = (*b)->next;
+	first->next = second->next;
+	second->next = first;
+	*b = second;
+	write(1, "sb\n", 3);
 }
