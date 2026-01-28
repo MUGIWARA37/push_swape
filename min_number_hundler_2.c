@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   min_number_hundler_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 11:13:03 by rhlou            ###   ########.fr       */
+/*   Created: 2026/01/28 10:41:53 by rhlou             #+#    #+#             */
+/*   Updated: 2026/01/28 10:42:20 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	sort_min_num(t_stack **a, t_stack **b, int size)
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		size;
-
-	a = NULL;
-	b = NULL;
-	if (ac == 1)
-		return (0);
-	arg_handler(&a, av + 1);
-	if (is_sorted(&a))
-		return (0);
-	size = ft_lstsize(a);
-	if (size <= 5)
-		sort_min_num(&a, &b, size);
-	chunk_sort(&a, &b);
-	destroy_stack(&a);
-	destroy_stack(&b);
-	return (0);
+	if (size == 2)
+		is_2(a);
+	else if (size == 3)
+		is_3(a);
+	else
+		is_4_5(a, b);
+	destroy_stack(a);
+	destroy_stack(b);
+	exit(0);
 }

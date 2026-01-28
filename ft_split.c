@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 21:16:30 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 09:10:46 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 11:06:26 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 static size_t	word_cntr(char const *s, char c)
 {
-	size_t	i;
 	size_t	nw;
-	int		have_num;
+	int		in_word;
 
-	i = 0;
 	nw = 0;
-	have_num = 0;
-	while (s[i])
+	in_word = 0;
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i])
+		if (*s != c && in_word == 0)
 		{
-			if (s[i] >= '0' && s[i] <= '9')
-				have_num = 1;
+			in_word = 1;
 			nw++;
-			while (s[i] && s[i] != c)
-				i++;
 		}
+		else if (*s == c)
+			in_word = 0;
+		s++;
 	}
-	if (!have_num)
-		return (0);
 	return (nw);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:07:35 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 10:29:37 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 10:44:22 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,15 @@ size_t				ft_strlen(const char *s);
 long				ft_atoi(const char *str);
 char				**ft_split(char const *s, char c);
 int					is_sorted(t_stack **stack);
+
+// case of small number of argumants
+
 void				sort_min_num(t_stack **a, t_stack **b, int size);
+void				is_2(t_stack **stack);
+void				is_3(t_stack **a);
+void				is_4_5(t_stack **a, t_stack **b);
+void				push_smallest(t_stack **a, t_stack **b, int target);
+int					find_index_pos(t_stack *stack, int index);
 
 // sorting algo and moves function
 void				chunk_sort(t_stack **a, t_stack **b);

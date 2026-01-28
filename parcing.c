@@ -6,13 +6,13 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:26:31 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 09:06:12 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 11:03:05 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	erreur_nigga(t_stack **stack)
+static void	erreur_triger(t_stack **stack)
 {
 	write(2, "Error\n", 6);
 	destroy_stack(stack);
@@ -30,13 +30,13 @@ static void	arg_handler2(t_stack **stack, char **split)
 		if (!split[i][0] || !av_is_num(split[i]))
 		{
 			free_split(split);
-			erreur_nigga(stack);
+			erreur_triger(stack);
 		}
 		nbr = ft_atoi(split[i]);
 		if (!check_number(nbr) || is_belongs(*stack, nbr))
 		{
 			free_split(split);
-			erreur_nigga(stack);
+			erreur_triger(stack);
 		}
 		fill_stack(stack, (int)nbr);
 		i++;
@@ -55,7 +55,7 @@ void	arg_handler(t_stack **stack, char **av)
 	{
 		split = ft_split(av[i], ' ');
 		if (!split)
-			erreur_nigga(stack);
+			erreur_triger(stack);
 		arg_handler2(stack, split);
 		free_split(split);
 		i++;

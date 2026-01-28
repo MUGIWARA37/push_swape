@@ -6,13 +6,13 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 09:48:53 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 10:34:56 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/28 10:45:00 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_index_pos(t_stack *stack, int index)
+int	find_index_pos(t_stack *stack, int index)
 {
 	int	pos;
 
@@ -26,11 +26,13 @@ static int	find_index_pos(t_stack *stack, int index)
 	}
 	return (-1);
 }
-static void	is_2(t_stack **stack)
+
+void	is_2(t_stack **stack)
 {
 	ra(stack);
 }
-static void	is_3(t_stack **a)
+
+void	is_3(t_stack **a)
 {
 	int	first;
 	int	second;
@@ -57,7 +59,7 @@ static void	is_3(t_stack **a)
 		rra(a);
 }
 
-static void	push_smallest(t_stack **a, t_stack **b, int target)
+void	push_smallest(t_stack **a, t_stack **b, int target)
 {
 	int	pos;
 	int	size;
@@ -96,18 +98,4 @@ void	is_4_5(t_stack **a, t_stack **b)
 		sb(b);
 	while (*b)
 		pa(a, b);
-}
-
-
-void	sort_min_num(t_stack **a, t_stack **b, int size)
-{
-	if (size == 2)
-		is_2(a);
-	else if (size == 3)
-		is_3(a);
-	else
-		is_4_5(a, b);
-	destroy_stack(a);
-	destroy_stack(b);
-	exit(0);
 }
