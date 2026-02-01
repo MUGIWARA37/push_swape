@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 14:09:59 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 11:13:03 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/02/01 10:16:30 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	size = ft_lstsize(a);
 	if (size <= 5)
 		sort_min_num(&a, &b, size);
-	chunk_sort(&a, &b);
+	radix_sort(&a , &b);
 	destroy_stack(&a);
 	destroy_stack(&b);
 	return (0);

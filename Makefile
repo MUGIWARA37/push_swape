@@ -1,7 +1,7 @@
 NAME	= push_swap
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= min_number_hundler.c min_number_hundler_2.c chunk_sort.c ft_atoi.c ft_lstsize.c ft_split.c ft_strlcpy.c ft_strlen.c is_sorted.c parcing_helper.c parcing.c ps_command_2.c ps_command.c push_swap_ulits.c push_swap.c
+SRCS	= min_number_hundler.c min_number_hundler_2.c radix_sort.c chunk_sort.c ft_atoi.c ft_lstsize.c ft_split.c ft_strlcpy.c ft_strlen.c is_sorted.c parcing_helper.c parcing.c ps_command_2.c ps_command.c push_swap_ulits.c push_swap.c
 OBJS	= $(SRCS:.c=.o)
 
 # ------------------- RULES -------------------

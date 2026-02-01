@@ -1,5 +1,0 @@
-1 - compile the project using the make file or the command : cc .*c -o push_swap
-
-2 - run the command : bash push_swap_test_linux.sh
-
-3 - good luck !!
