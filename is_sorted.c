@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 09:26:10 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 09:46:39 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/02/01 10:15:19 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	is_sorted(t_stack **stack)
 	t_stack	*tmp;
 
 	if (!stack || !*stack || !(*stack)->next)
+	{
+		destroy_stack(stack);
 		return (1);
+	}
 	tmp = *stack;
 	while (tmp->next)
 	{
