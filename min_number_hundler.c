@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 09:48:53 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 10:45:00 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/02/01 12:21:03 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	find_index_pos(t_stack *stack, int index)
 	return (-1);
 }
 
-void	is_2(t_stack **stack)
+void	is_two(t_stack **stack)
 {
 	ra(stack);
 }
 
-void	is_3(t_stack **a)
+void	is_three(t_stack **a)
 {
 	int	first;
 	int	second;
@@ -81,7 +81,7 @@ void	push_smallest(t_stack **a, t_stack **b, int target)
 	pb(a, b);
 }
 
-void	is_4_5(t_stack **a, t_stack **b)
+void	is_more(t_stack **a, t_stack **b)
 {
 	int	size;
 
@@ -93,7 +93,7 @@ void	is_4_5(t_stack **a, t_stack **b)
 	}
 	else
 		push_smallest(a, b, 0);
-	is_3(a);
+	is_three(a);
 	if (size == 5 && (*b)->index < (*b)->next->index)
 		sb(b);
 	while (*b)

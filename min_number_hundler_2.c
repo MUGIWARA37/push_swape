@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 10:41:53 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 10:42:20 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/02/01 12:21:03 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	sort_min_num(t_stack **a, t_stack **b, int size)
 {
 	if (size == 2)
-		is_2(a);
+		is_two(a);
 	else if (size == 3)
-		is_3(a);
+		is_three(a);
 	else
-		is_4_5(a, b);
+		is_more(a, b);
 	destroy_stack(a);
 	destroy_stack(b);
 	exit(0);

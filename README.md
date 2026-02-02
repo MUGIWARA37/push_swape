@@ -22,10 +22,11 @@ The project requires implementing efficient algorithms for sorting, such as inde
 
 2. **YouTube Tutorials**  
    - Understanding the project and important flows: <https://youtu.be/OaG81sDEpVk>
-   - Understanding the Radix sort algo : <https://youtu.be/nu4gDuFabIM?si=0tOanfcD8q9qtxSJ>
 
 3. **Peer-to-Peer Learning**  
    Collaborating with colleagues and seniors helped understand the bit manipulation used in the radix algorithm and addressing edge cases that are difficult to catch alone.
 
 4. **AI Usage**  
    -AI was used to search for concise definitions, debug code, and suggest more efficient implementations for solving issues with lower complexity.
+   
+   -Understanding the chunk sort algo

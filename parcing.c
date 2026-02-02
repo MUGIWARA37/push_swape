@@ -6,7 +6,7 @@
 /*   By: rhlou <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:26:31 by rhlou             #+#    #+#             */
-/*   Updated: 2026/01/28 11:03:05 by rhlou            ###   ########.fr       */
+/*   Updated: 2026/01/31 11:12:33 by rhlou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	arg_handler2(t_stack **stack, char **split)
 			free_split(split);
 			erreur_triger(stack);
 		}
-		nbr = ft_atoi(split[i]);
+		nbr = ft_atol(split[i]);
 		if (!check_number(nbr) || is_belongs(*stack, nbr))
 		{
 			free_split(split);
